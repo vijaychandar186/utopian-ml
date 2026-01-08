@@ -1,7 +1,9 @@
 'use client';
 
-import { Bot, SendHorizontal, Trash, X } from 'lucide-react';
+import { Brain, SendHorizontal, Trash, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { sendMessage } from '@/actions/ai-chat';
@@ -96,7 +98,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
       {/* HEADER */}
       <div className='flex items-center justify-between border-b p-4'>
         <div className='flex items-center gap-2'>
-          <Bot className='text-primary h-5 w-5' />
+          <Brain className='text-primary h-5 w-5' />
           <span className='text-sm font-medium'>AI Assistant</span>
         </div>
         <Button variant='ghost' size='icon' onClick={onClose}>
@@ -116,13 +118,84 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           >
             <div
               className={cn(
-                'max-w-[80%] rounded-lg p-3 text-sm break-words whitespace-pre-wrap shadow',
+                'max-w-[80%] rounded-lg p-3 text-sm break-words shadow',
                 m.role === 'assistant'
                   ? 'bg-muted text-foreground'
-                  : 'bg-primary text-primary-foreground'
+                  : 'bg-primary text-primary-foreground whitespace-pre-wrap'
               )}
             >
-              {m.content}
+              {m.role === 'assistant' ? (
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    table: ({ children }) => (
+                      <div className='my-2 overflow-x-auto'>
+                        <table className='min-w-full border-collapse text-sm'>
+                          {children}
+                        </table>
+                      </div>
+                    ),
+                    thead: ({ children }) => (
+                      <thead className='bg-background/50'>{children}</thead>
+                    ),
+                    th: ({ children }) => (
+                      <th className='border-border border px-3 py-2 text-left font-semibold'>
+                        {children}
+                      </th>
+                    ),
+                    td: ({ children }) => (
+                      <td className='border-border border px-3 py-2'>
+                        {children}
+                      </td>
+                    ),
+                    code: ({ children, className }) => {
+                      const isInline = !className;
+                      return isInline ? (
+                        <code className='bg-background/50 rounded px-1.5 py-0.5 text-xs'>
+                          {children}
+                        </code>
+                      ) : (
+                        <code className='block overflow-x-auto rounded bg-zinc-900 p-3 text-xs text-zinc-100'>
+                          {children}
+                        </code>
+                      );
+                    },
+                    pre: ({ children }) => (
+                      <pre className='my-2 overflow-x-auto'>{children}</pre>
+                    ),
+                    p: ({ children }) => (
+                      <p className='mb-2 last:mb-0'>{children}</p>
+                    ),
+                    ul: ({ children }) => (
+                      <ul className='mb-2 list-inside list-disc space-y-1'>
+                        {children}
+                      </ul>
+                    ),
+                    ol: ({ children }) => (
+                      <ol className='mb-2 list-inside list-decimal space-y-1'>
+                        {children}
+                      </ol>
+                    ),
+                    strong: ({ children }) => (
+                      <strong className='font-semibold'>{children}</strong>
+                    ),
+                    a: ({ href, children }) => (
+                      <a
+                        href={href}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='text-primary underline'
+                      >
+                        {children}
+                      </a>
+                    )
+                  }}
+                >
+                  {m.content}
+                </ReactMarkdown>
+              ) : (
+                m.content
+              )}
             </div>
           </div>
         ))}

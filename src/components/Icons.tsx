@@ -12,7 +12,7 @@ import {
   Settings,
   Server,
   Monitor,
-  Bot,
+  Brain,
   Contrast,
   Palette,
   Command
@@ -37,7 +37,7 @@ export const SocialIcons = {
 };
 
 export const NavIcons = {
-  AIChat: Bot,
+  AIChat: Brain,
   Theme: Contrast,
   Scheme: Palette,
   Search: Command

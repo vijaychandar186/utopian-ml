@@ -17,7 +17,7 @@ export default function AIChatButton() {
         aria-label='Open Chat'
       >
         <AIChatIcon className='h-4 w-4' />
-        <span>Guide</span>
+        <span>AI Chat</span>
       </SidebarMenuButton>
       <AIChatBox open={chatBoxOpen} onClose={() => setChatBoxOpen(false)} />
     </>
