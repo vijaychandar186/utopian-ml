@@ -90,9 +90,9 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   return (
     <div
       className={cn(
-        'bg-background/95 fixed inset-x-0 bottom-0 flex flex-col border-t shadow-xl backdrop-blur-sm',
+        'bg-background/95 flex flex-col border-t shadow-xl backdrop-blur-sm',
         'h-[100dvh]',
-        'sm:static sm:h-[600px] sm:max-h-[80vh] sm:rounded-2xl sm:border'
+        'sm:h-[600px] sm:max-h-[80vh] sm:rounded-2xl sm:border'
       )}
     >
       {/* HEADER */}
