@@ -1,4 +1,4 @@
-export const MODEL_NAME = 'llama-3.1-8b-instant';
+export const MODEL_NAME = 'openai/gpt-oss-120b';
 
 export const SYSTEM_CONTEXT = `
 You are an AI assistant for Utopian ML — a platform dedicated to visualizing and explaining complex Machine Learning architectures. Respond in a clear, technical, and educational tone.

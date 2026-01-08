@@ -19,7 +19,7 @@ import {
   SidebarMenuSubItem,
   SidebarMenuSubButton
 } from '@/components/ui/sidebar';
-import { NavIcons, ArchitectureIcons } from '@/components/Icons';
+import { AllIcons } from '@/components/Icons';
 import { navItems } from '@/constants/navItems';
 
 export function NavMain() {
@@ -34,7 +34,7 @@ export function NavMain() {
             <SidebarMenu>
               {group.items?.map((item) => {
                 const isActive = item.url ? pathname === item.url : false;
-                const Icon = item.icon ? NavIcons[item.icon] ?? ArchitectureIcons[item.icon] : null;
+                const Icon = item.icon ? AllIcons[item.icon] : null;
 
                 if (item.component) {
                   const Component = item.component;
@@ -74,7 +74,7 @@ export function NavMain() {
                                 ? pathname === subItem.url
                                 : false;
                               const SubIcon = subItem.icon
-                                ? NavIcons[subItem.icon] ?? ArchitectureIcons[subItem.icon]
+                                ? AllIcons[subItem.icon]
                                 : null;
                               if (!subItem.url) return null;
 

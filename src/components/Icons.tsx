@@ -44,5 +44,10 @@ export const NavIcons = {
 };
 
 export const ArchitectureIcons = {
-  Transformer: Layers,
-}; 
+  Transformer: Layers
+};
+
+export const AllIcons = {
+  ...NavIcons,
+  ...ArchitectureIcons
+};
