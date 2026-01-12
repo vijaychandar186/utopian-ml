@@ -12,21 +12,35 @@ export const upcomingGuidesContent = {
       icon: 'Brain'
     },
     {
-      title: 'Linear & Logistic Regression',
+      title: 'Linear Regression',
       description:
-        'Statistical learning foundations that influenced neural network optimization.',
+        'Foundational supervised learning for continuous prediction tasks.',
       category: 'Foundations',
       icon: 'Sigma'
     },
     {
-      title: 'Decision Trees & Ensembles',
+      title: 'Logistic Regression',
       description:
-        'Tree-based models and ensemble methods like Random Forests and Gradient Boosting.',
+        'Probabilistic classification model using the sigmoid function.',
+      category: 'Foundations',
+      icon: 'Sigma'
+    },
+    {
+      title: 'Decision Trees',
+      description:
+        'Hierarchical models that learn decision rules from data features.',
       category: 'Foundations',
       icon: 'GitBranch'
     },
     {
-      title: 'Support Vector Machines (SVMs)',
+      title: 'Ensembles',
+      description:
+        'Random Forests, Gradient Boosting, and combining multiple models.',
+      category: 'Foundations',
+      icon: 'GitBranch'
+    },
+    {
+      title: 'SVMs',
       description:
         'Maximum-margin classifiers with kernel methods for nonlinear boundaries.',
       category: 'Foundations',
@@ -39,28 +53,28 @@ export const upcomingGuidesContent = {
       icon: 'Link'
     },
     {
-      title: 'N-gram Models',
+      title: 'N-grams',
       description:
         'Higher-order Markov models for statistical language modeling.',
       category: 'Foundations',
       icon: 'Layers'
     },
     {
-      title: 'Hidden Markov Models (HMMs)',
+      title: 'HMMs',
       description:
         'Latent-state probabilistic models that dominated early sequence learning.',
       category: 'Foundations',
       icon: 'Eye'
     },
     {
-      title: 'State Space Models & Kalman Filters',
+      title: 'Kalman Filters',
       description:
         'Continuous latent dynamical systems for time-series modeling.',
       category: 'Foundations',
       icon: 'Activity'
     },
     {
-      title: 'Dynamic Bayesian Networks',
+      title: 'Bayesian Networks',
       description: 'Generalized probabilistic graphical models over time.',
       category: 'Foundations',
       icon: 'Network'
@@ -70,31 +84,31 @@ export const upcomingGuidesContent = {
     // CORE NEURAL NETWORKS - Fundamental Architectures & Training
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Feedforward Neural Networks (MLP)',
+      title: 'MLPs',
       description:
         'Multilayer perceptrons and universal nonlinear function approximation.',
-      category: 'Core Neural Networks',
+      category: 'Neural Networks',
       icon: 'Layers'
     },
     {
-      title: 'Activation Functions',
+      title: 'Activations',
       description:
         'Sigmoid, tanh, ReLU, GELU, and SwiGLU—nonlinearities that power deep learning.',
-      category: 'Core Neural Networks',
+      category: 'Neural Networks',
       icon: 'Zap'
     },
     {
       title: 'Backpropagation',
       description:
         'Gradient-based learning algorithm that enabled training deep networks.',
-      category: 'Core Neural Networks',
+      category: 'Neural Networks',
       icon: 'CornerDownLeft'
     },
     {
-      title: 'Weight Initialization',
+      title: 'Initialization',
       description:
         'Xavier, He, and other initialization strategies for stable training.',
-      category: 'Core Neural Networks',
+      category: 'Neural Networks',
       icon: 'Dices'
     },
 
@@ -102,35 +116,35 @@ export const upcomingGuidesContent = {
     // OPTIMIZATION - Training Techniques & Regularization
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Gradient Descent & Optimizers',
+      title: 'Optimizers',
       description:
         'SGD, Momentum, Adam, AdamW, and modern optimization algorithms.',
       category: 'Optimization',
       icon: 'TrendingDown'
     },
     {
-      title: 'Learning Rate Schedules',
+      title: 'Learning Rates',
       description:
         'Warmup, decay, cosine annealing, and cyclical learning rates.',
       category: 'Optimization',
       icon: 'LineChart'
     },
     {
-      title: 'Batch Normalization',
+      title: 'Batch Norm',
       description:
         'Stabilizing deep network training through internal normalization.',
       category: 'Optimization',
       icon: 'Sliders'
     },
     {
-      title: 'Layer Normalization',
+      title: 'Layer Norm',
       description:
         'Normalization technique essential for Transformers and sequence models.',
       category: 'Optimization',
       icon: 'AlignCenter'
     },
     {
-      title: 'Dropout & Regularization',
+      title: 'Regularization',
       description:
         'Techniques to prevent overfitting: dropout, weight decay, and early stopping.',
       category: 'Optimization',
@@ -141,28 +155,28 @@ export const upcomingGuidesContent = {
     // SEQUENCE MODELS - Recurrent Architectures (Pre-Transformer)
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Recurrent Neural Networks (RNNs)',
+      title: 'RNNs',
       description:
         'Neural networks with temporal recurrence for sequence modeling.',
       category: 'Sequence Models',
       icon: 'Repeat'
     },
     {
-      title: 'Long Short-Term Memory (LSTM)',
+      title: 'LSTMs',
       description:
         'Gated recurrent architecture solving the vanishing gradient problem.',
       category: 'Sequence Models',
       icon: 'Clock'
     },
     {
-      title: 'Gated Recurrent Units (GRU)',
+      title: 'GRUs',
       description:
         'Simplified gated recurrent architecture with fewer parameters.',
       category: 'Sequence Models',
       icon: 'Shuffle'
     },
     {
-      title: 'Bidirectional RNNs',
+      title: 'Bidirectional',
       description:
         'Sequence models that process information in both directions.',
       category: 'Sequence Models',
@@ -173,42 +187,41 @@ export const upcomingGuidesContent = {
     // COMPUTER VISION - CNNs & Visual Architectures
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Convolutional Neural Networks (CNNs)',
+      title: 'CNNs',
       description:
         'Spatially structured neural networks with local connectivity and weight sharing.',
       category: 'Computer Vision',
       icon: 'Grid'
     },
     {
-      title: 'Pooling & Invariance',
+      title: 'Pooling',
       description:
         'Downsampling techniques for spatial robustness and translation invariance.',
       category: 'Computer Vision',
       icon: 'Minimize'
     },
     {
-      title: 'Classic CNN Architectures',
+      title: 'CNN Classics',
       description:
         'LeNet, AlexNet, VGG, Inception, and the evolution of deep vision networks.',
       category: 'Computer Vision',
       icon: 'Landmark'
     },
     {
-      title: 'Residual Connections',
-      description:
-        'Skip connections that enabled training very deep networks (ResNet).',
+      title: 'ResNets',
+      description: 'Skip connections that enabled training very deep networks.',
       category: 'Computer Vision',
       icon: 'CornerUpRight'
     },
     {
-      title: 'Object Detection',
+      title: 'Detection',
       description:
         'R-CNN family, YOLO, SSD—locating and classifying objects in images.',
       category: 'Computer Vision',
       icon: 'ScanSearch'
     },
     {
-      title: 'Semantic & Instance Segmentation',
+      title: 'Segmentation',
       description:
         'Pixel-level classification with FCN, U-Net, and Mask R-CNN.',
       category: 'Computer Vision',
@@ -221,21 +234,21 @@ export const upcomingGuidesContent = {
     {
       title: 'Autoencoders',
       description: 'Unsupervised representation learning via reconstruction.',
-      category: 'Representation Learning',
+      category: 'Representation',
       icon: 'Database'
     },
     {
-      title: 'Word Embeddings',
+      title: 'Embeddings',
       description:
         'Word2Vec, GloVe, and FastText—distributional word representations.',
-      category: 'Representation Learning',
+      category: 'Representation',
       icon: 'Search'
     },
     {
-      title: 'Contrastive Learning',
+      title: 'Contrastive',
       description:
         'SimCLR, MoCo, and self-supervised learning through contrastive objectives.',
-      category: 'Representation Learning',
+      category: 'Representation',
       icon: 'Contrast'
     },
 
@@ -243,7 +256,7 @@ export const upcomingGuidesContent = {
     // GRAPH NEURAL NETWORKS - Learning on Graph-Structured Data
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Graph Neural Networks (GNNs)',
+      title: 'GNNs',
       description:
         'Message passing on graphs with GCN, GAT, and GraphSAGE architectures.',
       category: 'Graph Learning',
@@ -254,7 +267,7 @@ export const upcomingGuidesContent = {
     // NLP (PRE-TRANSFORMER) - Sequence-to-Sequence Learning
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Seq2Seq Models',
+      title: 'Seq2Seq',
       description:
         'Encoder–decoder architectures for sequence transduction tasks.',
       category: 'NLP',
@@ -272,7 +285,7 @@ export const upcomingGuidesContent = {
     // ATTENTION & TRANSFORMERS - The Architectural Revolution
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Attention Mechanism',
+      title: 'Attention',
       description:
         'Selective information routing enabling focus on relevant inputs.',
       category: 'Architecture',
@@ -286,14 +299,14 @@ export const upcomingGuidesContent = {
       icon: 'Radar'
     },
     {
-      title: 'Positional Encodings',
+      title: 'Positional',
       description:
         'Sinusoidal, learned, RoPE, and ALiBi—encoding sequence position.',
       category: 'Architecture',
       icon: 'Hash'
     },
     {
-      title: 'Multi-Head Attention',
+      title: 'Multi-Head',
       description:
         'Parallel attention heads capturing different relationship patterns.',
       category: 'Architecture',
@@ -324,15 +337,15 @@ export const upcomingGuidesContent = {
       icon: 'Sparkles'
     },
     {
-      title: 'T5 & Encoder–Decoder Transformers',
+      title: 'T5',
       description: 'Unified text-to-text Transformer framework.',
       category: 'NLP',
       icon: 'ArrowLeftRight'
     },
     {
-      title: 'RoBERTa, ALBERT & Variants',
+      title: 'BERT Variants',
       description:
-        'Optimized BERT variants with improved pretraining and efficiency.',
+        'RoBERTa, ALBERT, and optimized encoders with improved pretraining.',
       category: 'NLP',
       icon: 'Sparkles'
     },
@@ -341,13 +354,13 @@ export const upcomingGuidesContent = {
     // VISION TRANSFORMERS - Transformers for Images
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Vision Transformer (ViT)',
+      title: 'ViT',
       description: 'Transformers applied to images via patch embeddings.',
       category: 'Computer Vision',
       icon: 'Grid'
     },
     {
-      title: 'Swin Transformer',
+      title: 'Swin',
       description:
         'Hierarchical vision Transformer with shifted window attention.',
       category: 'Computer Vision',
@@ -358,29 +371,29 @@ export const upcomingGuidesContent = {
     // GENERATIVE MODELS - Learning Data Distributions
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Variational Autoencoders (VAE)',
+      title: 'VAEs',
       description:
         'Probabilistic latent-variable models for generative learning.',
-      category: 'Generative Models',
+      category: 'Generative',
       icon: 'Cloud'
     },
     {
-      title: 'Generative Adversarial Networks (GANs)',
+      title: 'GANs',
       description: 'Adversarial training framework for realistic generation.',
-      category: 'Generative Models',
+      category: 'Generative',
       icon: 'Flame'
     },
     {
-      title: 'Normalizing Flows',
+      title: 'Flows',
       description:
         'Invertible generative models with exact likelihood computation.',
-      category: 'Generative Models',
+      category: 'Generative',
       icon: 'Waves'
     },
     {
-      title: 'Diffusion Models',
+      title: 'Diffusion',
       description: 'Generative models based on iterative denoising processes.',
-      category: 'Generative Models',
+      category: 'Generative',
       icon: 'Sparkles'
     },
 
@@ -395,13 +408,13 @@ export const upcomingGuidesContent = {
       icon: 'Image'
     },
     {
-      title: 'Multimodal LLMs',
+      title: 'VLMs',
       description: 'Vision-language models like LLaVA, GPT-4V, and Gemini.',
       category: 'Multimodal',
       icon: 'Eye'
     },
     {
-      title: 'Text-to-Image Generation',
+      title: 'Text-to-Image',
       description:
         'DALL-E, Stable Diffusion, and Midjourney—generating images from text.',
       category: 'Multimodal',
@@ -412,28 +425,28 @@ export const upcomingGuidesContent = {
     // REINFORCEMENT LEARNING - Learning from Interaction
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Reinforcement Learning Fundamentals',
+      title: 'RL Basics',
       description:
         'MDPs, value functions, and the exploration-exploitation tradeoff.',
-      category: 'Reinforcement Learning',
+      category: 'RL',
       icon: 'Gamepad'
     },
     {
-      title: 'Q-Learning & DQN',
+      title: 'Q-Learning',
       description: 'Value-based RL from tabular Q-learning to deep Q-networks.',
-      category: 'Reinforcement Learning',
+      category: 'RL',
       icon: 'Target'
     },
     {
-      title: 'Policy Gradients & PPO',
+      title: 'Policy Gradients',
       description: 'Policy optimization methods from REINFORCE to PPO.',
-      category: 'Reinforcement Learning',
+      category: 'RL',
       icon: 'Compass'
     },
     {
-      title: 'Actor-Critic Methods',
+      title: 'Actor-Critic',
       description: 'Combining value and policy learning with A2C and SAC.',
-      category: 'Reinforcement Learning',
+      category: 'RL',
       icon: 'Users'
     },
 
@@ -441,28 +454,28 @@ export const upcomingGuidesContent = {
     // FOUNDATION MODELS - Large-Scale Pretrained Models
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Large Language Models (LLMs)',
+      title: 'LLMs',
       description:
         'Massively scaled Transformer models exhibiting emergent capabilities.',
-      category: 'Foundation Models',
+      category: 'Foundation',
       icon: 'Globe'
     },
     {
-      title: 'Instruction Tuning & RLHF',
+      title: 'RLHF',
       description: 'Aligning models with human intent through feedback.',
-      category: 'Foundation Models',
+      category: 'Foundation',
       icon: 'CheckCircle'
     },
     {
-      title: 'In-Context Learning',
+      title: 'ICL',
       description: 'Few-shot and zero-shot learning without parameter updates.',
-      category: 'Foundation Models',
+      category: 'Foundation',
       icon: 'BookOpen'
     },
     {
-      title: 'Chain-of-Thought Reasoning',
+      title: 'Chain-of-Thought',
       description: 'Prompting techniques for step-by-step reasoning in LLMs.',
-      category: 'Foundation Models',
+      category: 'Foundation',
       icon: 'ListOrdered'
     },
 
@@ -470,26 +483,26 @@ export const upcomingGuidesContent = {
     // EFFICIENT ML - Scaling & Optimization Techniques
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Transfer Learning & Fine-tuning',
+      title: 'Fine-tuning',
       description: 'Adapting pretrained models to downstream tasks.',
       category: 'Efficient ML',
       icon: 'RefreshCw'
     },
     {
-      title: 'Knowledge Distillation',
+      title: 'Distillation',
       description: 'Training smaller models to mimic larger teacher networks.',
       category: 'Efficient ML',
       icon: 'Filter'
     },
     {
-      title: 'LoRA & Parameter-Efficient Fine-Tuning',
+      title: 'LoRA',
       description:
         'Low-rank adapters and efficient methods for adapting large models.',
       category: 'Efficient ML',
       icon: 'Minimize'
     },
     {
-      title: 'Quantization & Pruning',
+      title: 'Quantization',
       description:
         'Compressing models through reduced precision and weight removal.',
       category: 'Efficient ML',
@@ -503,7 +516,7 @@ export const upcomingGuidesContent = {
       icon: 'Zap'
     },
     {
-      title: 'KV Cache & Inference Optimization',
+      title: 'KV Cache',
       description: 'Techniques for efficient autoregressive generation.',
       category: 'Efficient ML',
       icon: 'HardDrive'
@@ -513,28 +526,28 @@ export const upcomingGuidesContent = {
     // RETRIEVAL & AGENTS - External Knowledge & Tool Use
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Retrieval-Augmented Generation (RAG)',
+      title: 'RAG',
       description: 'Grounding LLM outputs with retrieved external knowledge.',
-      category: 'Retrieval & Agents',
+      category: 'Retrieval',
       icon: 'BookSearch'
     },
     {
-      title: 'Vector Databases & Embeddings',
+      title: 'Vector DBs',
       description: 'Storing and retrieving embeddings for semantic search.',
-      category: 'Retrieval & Agents',
+      category: 'Retrieval',
       icon: 'Database'
     },
     {
-      title: 'Tool Use & Function Calling',
+      title: 'Tool Use',
       description: 'Enabling LLMs to interact with external tools and APIs.',
-      category: 'Retrieval & Agents',
+      category: 'Retrieval',
       icon: 'Wrench'
     },
     {
-      title: 'AI Agents & Multi-Agent Systems',
+      title: 'AI Agents',
       description:
         'Autonomous agents and collaborative multi-agent architectures.',
-      category: 'Retrieval & Agents',
+      category: 'Retrieval',
       icon: 'Bot'
     },
 
@@ -542,13 +555,13 @@ export const upcomingGuidesContent = {
     // MODERN ARCHITECTURES - Beyond Standard Transformers
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Mixture of Experts (MoE)',
+      title: 'MoE',
       description: 'Conditional computation for efficient model scaling.',
       category: 'Architecture',
       icon: 'Boxes'
     },
     {
-      title: 'State Space Models (S4/S6)',
+      title: 'SSMs',
       description:
         'Structured state-space models for efficient long-sequence learning.',
       category: 'Architecture',
@@ -562,14 +575,14 @@ export const upcomingGuidesContent = {
       icon: 'Cpu'
     },
     {
-      title: 'xLSTM & Modern Recurrence',
+      title: 'xLSTM',
       description:
         'Revisiting recurrent architectures with modern improvements.',
       category: 'Architecture',
       icon: 'RotateCcw'
     },
     {
-      title: 'Hyena & Convolution-Based Models',
+      title: 'Hyena',
       description:
         'Long convolutions as an alternative to attention mechanisms.',
       category: 'Architecture',
