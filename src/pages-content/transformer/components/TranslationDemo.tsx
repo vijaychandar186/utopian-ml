@@ -128,10 +128,9 @@ export function TranslationDemo() {
             Translate: Spanish → English
           </CardTitle>
           <CardDescription>
-            Experience a transformer model running directly in your
-            browser! Uses Helsinki-NLP&apos;s OPUS-MT model (~113MB, int8
-            quantized) via Hugging Face. Downloads once, then cached for future
-            use.
+            Experience a transformer model running directly in your browser!
+            Uses Helsinki-NLP&apos;s OPUS-MT model (~113MB, int8 quantized) via
+            Hugging Face. Downloads once, then cached for future use.
           </CardDescription>
         </CardHeader>
         <CardContent className='space-y-6'>
@@ -215,7 +214,7 @@ export function TranslationDemo() {
               onClick={handleTranslate}
               disabled={isLoading || !inputText.trim()}
               size='lg'
-              className='min-w-48'
+              className='w-full sm:w-auto sm:min-w-48'
             >
               {isLoading
                 ? isModelLoaded

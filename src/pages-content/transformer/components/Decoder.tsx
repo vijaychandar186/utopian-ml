@@ -14,7 +14,7 @@ export function Decoder() {
       <h2 className='mb-6 text-xl font-semibold'>{decoderContent.title}</h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <p className='text-muted-foreground mb-6 leading-relaxed'>
             {decoderContent.description}
           </p>

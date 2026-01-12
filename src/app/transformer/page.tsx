@@ -30,9 +30,9 @@ function Divider() {
 
 export default function TransformerPage() {
   return (
-    <div className='flex w-full flex-col'>
+    <div className='bg-background text-foreground min-h-screen'>
       <Header />
-      <main className='mx-auto w-full max-w-6xl px-8 py-12'>
+      <main className='mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8'>
         <div id='translation-demo'>
           <TranslationDemo />
         </div>

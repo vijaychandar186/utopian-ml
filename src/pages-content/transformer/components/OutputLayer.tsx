@@ -23,7 +23,7 @@ export function OutputLayer() {
       <h2 className='mb-6 text-xl font-semibold'>{outputLayerContent.title}</h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <p className='text-muted-foreground mb-6 leading-relaxed'>
             {outputLayerContent.description}
           </p>
@@ -57,9 +57,7 @@ export function OutputLayer() {
           </div>
 
           <div className='border-border bg-card mb-6 rounded-md border p-4'>
-            <h4 className='mb-4 font-medium'>
-              Softmax with Temperature
-            </h4>
+            <h4 className='mb-4 font-medium'>Softmax with Temperature</h4>
 
             <div className='mb-4'>
               <Label className='mb-2 block text-sm'>
@@ -86,8 +84,10 @@ export function OutputLayer() {
                   key={i}
                   className='bg-secondary flex items-center gap-3 rounded p-2'
                 >
-                  <span className='w-16 font-mono text-sm'>{pred.word}</span>
-                  <span className='text-muted-foreground w-20 text-xs'>
+                  <span className='w-12 truncate font-mono text-sm sm:w-16'>
+                    {pred.word}
+                  </span>
+                  <span className='text-muted-foreground hidden text-xs sm:block sm:w-20'>
                     logit: {pred.logit}
                   </span>
                   <div className='bg-muted relative h-4 flex-1 rounded-full'>
@@ -96,7 +96,7 @@ export function OutputLayer() {
                       style={{ width: `${probabilities[i] * 100}%` }}
                     />
                   </div>
-                  <span className='w-16 text-right font-mono text-sm'>
+                  <span className='w-12 text-right font-mono text-sm sm:w-16'>
                     {(probabilities[i] * 100).toFixed(1)}%
                   </span>
                 </div>

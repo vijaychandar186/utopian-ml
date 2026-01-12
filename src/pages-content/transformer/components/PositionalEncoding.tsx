@@ -32,7 +32,7 @@ export function PositionalEncoding() {
       </h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <div className='border-destructive bg-destructive/5 mb-6 rounded-md border-l-[3px] p-4'>
             <h4 className='text-destructive mb-2 font-semibold'>
               {positionalEncodingContent.problem.title}
@@ -84,9 +84,7 @@ export function PositionalEncoding() {
           </div>
 
           <div className='border-border bg-card rounded-md border p-4'>
-            <h4 className='mb-4 font-medium'>
-              Positional Encoding Calculator
-            </h4>
+            <h4 className='mb-4 font-medium'>Positional Encoding Calculator</h4>
             <div className='mb-4 grid gap-4 md:grid-cols-2'>
               <div>
                 <Label className='mb-2 block text-sm'>Position:</Label>

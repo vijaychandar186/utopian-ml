@@ -9,7 +9,7 @@ export function KeyInnovations() {
       </h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <p className='text-muted-foreground mb-6 leading-relaxed'>
             {keyInnovationsContent.description}
           </p>

@@ -9,19 +9,30 @@ import { Slider } from '@/components/ui/slider';
 import { trainingContent } from '@/pages-content/transformer/content/transformer-content';
 
 // Simple vocabulary for next-word prediction
-const VOCAB = ['the', 'cat', 'sat', 'on', 'mat', 'dog', 'ran', 'to', 'a', 'big'];
+const VOCAB = [
+  'the',
+  'cat',
+  'sat',
+  'on',
+  'mat',
+  'dog',
+  'ran',
+  'to',
+  'a',
+  'big'
+];
 const VOCAB_SIZE = VOCAB.length;
 const EMBEDDING_DIM = 16;
 
 // Training examples: [input words] -> target word
 const TRAINING_DATA: [number[], number][] = [
-  [[0, 1], 2],     // "the cat" -> "sat"
-  [[0, 1, 2], 3],  // "the cat sat" -> "on"
-  [[2, 3, 0], 4],  // "sat on the" -> "mat"
-  [[0, 5], 6],     // "the dog" -> "ran"
-  [[5, 6], 7],     // "dog ran" -> "to"
-  [[8, 9, 1], 2],  // "a big cat" -> "sat"
-  [[8, 9, 5], 6],  // "a big dog" -> "ran"
+  [[0, 1], 2], // "the cat" -> "sat"
+  [[0, 1, 2], 3], // "the cat sat" -> "on"
+  [[2, 3, 0], 4], // "sat on the" -> "mat"
+  [[0, 5], 6], // "the dog" -> "ran"
+  [[5, 6], 7], // "dog ran" -> "to"
+  [[8, 9, 1], 2], // "a big cat" -> "sat"
+  [[8, 9, 5], 6] // "a big dog" -> "ran"
 ];
 
 // Seeded random for reproducibility
@@ -33,7 +44,11 @@ function seededRandom(seed: number): () => number {
 }
 
 // Xavier initialization
-function initializeWeights(rows: number, cols: number, seed: number): number[][] {
+function initializeWeights(
+  rows: number,
+  cols: number,
+  seed: number
+): number[][] {
   const rng = seededRandom(seed);
   const scale = Math.sqrt(2.0 / (rows + cols));
   return Array.from({ length: rows }, () =>
@@ -56,7 +71,9 @@ function crossEntropyLoss(probs: number[], target: number): number {
 
 // Matrix-vector multiplication
 function matVecMul(matrix: number[][], vec: number[]): number[] {
-  return matrix.map((row) => row.reduce((sum, val, i) => sum + val * vec[i], 0));
+  return matrix.map((row) =>
+    row.reduce((sum, val, i) => sum + val * vec[i], 0)
+  );
 }
 
 // Mean pooling
@@ -83,7 +100,9 @@ export function Training() {
   const [loss, setLoss] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [lossHistory, setLossHistory] = useState<number[]>([]);
-  const [learningRate, setLearningRate] = useState(trainingContent.defaultLearningRate);
+  const [learningRate, setLearningRate] = useState(
+    trainingContent.defaultLearningRate
+  );
   const [maxEpochs, setMaxEpochs] = useState(trainingContent.defaultEpochs);
   const [batchSize, setBatchSize] = useState(trainingContent.defaultBatchSize);
   const [currentExample, setCurrentExample] = useState<{
@@ -117,7 +136,13 @@ export function Training() {
   );
 
   const backward = useCallback(
-    (inputIndices: number[], target: number, probs: number[], hidden: number[], lr: number) => {
+    (
+      inputIndices: number[],
+      target: number,
+      probs: number[],
+      hidden: number[],
+      lr: number
+    ) => {
       if (!modelRef.current) return;
       const model = modelRef.current;
 
@@ -216,7 +241,7 @@ export function Training() {
       <h2 className='mb-6 text-xl font-semibold'>{trainingContent.title}</h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <p className='text-muted-foreground mb-6 leading-relaxed'>
             {trainingContent.description}
           </p>
@@ -227,7 +252,9 @@ export function Training() {
                 key={i}
                 className={`bg-muted rounded-md border-l-[3px] p-4 border-chart-${(i % 5) + 1}`}
               >
-                <h4 className={`mb-2 font-semibold text-chart-${(i % 5) + 1}`}>{concept.title}</h4>
+                <h4 className={`mb-2 font-semibold text-chart-${(i % 5) + 1}`}>
+                  {concept.title}
+                </h4>
                 <p className='text-muted-foreground text-sm leading-relaxed'>
                   {concept.description}
                 </p>
@@ -255,13 +282,16 @@ export function Training() {
             <h4 className='mb-4 font-medium'>Training Demo</h4>
             <div className='border-primary/50 bg-primary/5 mb-6 rounded-md border p-3'>
               <p className='text-sm'>
-                <span className='font-semibold'>Real Training:</span> This demo runs actual gradient
-                descent on a tiny language model learning to predict the next word.
+                <span className='font-semibold'>Real Training:</span> This demo
+                runs actual gradient descent on a tiny language model learning
+                to predict the next word.
               </p>
             </div>
             <div className='mb-4 grid gap-4 md:grid-cols-3'>
               <div>
-                <Label className='mb-2 block text-sm'>Learning Rate: {learningRate.toFixed(2)}</Label>
+                <Label className='mb-2 block text-sm'>
+                  Learning Rate: {learningRate.toFixed(2)}
+                </Label>
                 <Slider
                   value={[learningRate]}
                   onValueChange={(v) => setLearningRate(v[0])}
@@ -273,7 +303,9 @@ export function Training() {
                 />
               </div>
               <div>
-                <Label className='mb-2 block text-sm'>Max Epochs: {maxEpochs}</Label>
+                <Label className='mb-2 block text-sm'>
+                  Max Epochs: {maxEpochs}
+                </Label>
                 <Slider
                   value={[maxEpochs]}
                   onValueChange={(v) => setMaxEpochs(v[0])}
@@ -285,7 +317,9 @@ export function Training() {
                 />
               </div>
               <div>
-                <Label className='mb-2 block text-sm'>Batch Size: {batchSize}</Label>
+                <Label className='mb-2 block text-sm'>
+                  Batch Size: {batchSize}
+                </Label>
                 <Slider
                   value={[batchSize]}
                   onValueChange={(v) => setBatchSize(v[0])}
@@ -320,11 +354,15 @@ export function Training() {
 
             {currentExample && (
               <div className='bg-muted mb-4 rounded-md p-4'>
-                <Label className='mb-2 block text-sm font-medium'>Current Example</Label>
+                <Label className='mb-2 block text-sm font-medium'>
+                  Current Example
+                </Label>
                 <div className='grid gap-2 text-sm'>
                   <div>
                     <span className='text-muted-foreground'>Input:</span>{' '}
-                    <span className='font-mono'>&quot;{currentExample.input}&quot;</span>
+                    <span className='font-mono'>
+                      &quot;{currentExample.input}&quot;
+                    </span>
                   </div>
                   <div className='flex items-center gap-4'>
                     <span>
@@ -353,7 +391,9 @@ export function Training() {
             <div className='grid gap-4 md:grid-cols-3'>
               <div className='bg-muted rounded-md p-4'>
                 <Label className='mb-2 block text-sm'>Cross-Entropy Loss</Label>
-                <span className='text-primary text-2xl font-bold'>{loss.toFixed(4)}</span>
+                <span className='text-primary text-2xl font-bold'>
+                  {loss.toFixed(4)}
+                </span>
               </div>
               <div className='bg-muted rounded-md p-4'>
                 <Label className='mb-2 block text-sm'>Training Accuracy</Label>
@@ -361,7 +401,8 @@ export function Training() {
                   {(accuracy * 100).toFixed(0)}%
                 </span>
                 <p className='text-muted-foreground mt-1 text-xs'>
-                  {Math.round(accuracy * TRAINING_DATA.length)}/{TRAINING_DATA.length} correct
+                  {Math.round(accuracy * TRAINING_DATA.length)}/
+                  {TRAINING_DATA.length} correct
                 </p>
               </div>
               <div className='bg-muted rounded-md p-4'>
@@ -371,7 +412,9 @@ export function Training() {
                     <div
                       key={i}
                       className='bg-primary flex-1 transition-all'
-                      style={{ height: `${Math.min(100, (l / maxLoss) * 100)}%` }}
+                      style={{
+                        height: `${Math.min(100, (l / maxLoss) * 100)}%`
+                      }}
                     />
                   ))}
                 </div>

@@ -9,7 +9,7 @@ export function Introduction() {
       </h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <div className='space-y-4'>
             {introductionContent.paragraphs.map((paragraph, i) => (
               <p key={i} className='text-muted-foreground leading-relaxed'>

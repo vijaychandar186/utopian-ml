@@ -19,7 +19,7 @@ export function SelfAttention() {
       </h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <p className='text-muted-foreground mb-4 leading-relaxed'>
             {selfAttentionContent.description}
           </p>

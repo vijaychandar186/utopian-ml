@@ -28,7 +28,9 @@ function seededRandom(seed: number): () => number {
 
 // Generate a deterministic embedding for a word based on its characters
 function generateWordEmbedding(word: string, dim: number): number[] {
-  const seed = word.split('').reduce((acc, char, i) => acc + char.charCodeAt(0) * (i + 1), 0);
+  const seed = word
+    .split('')
+    .reduce((acc, char, i) => acc + char.charCodeAt(0) * (i + 1), 0);
   const rng = seededRandom(seed);
   const embedding: number[] = [];
   for (let i = 0; i < dim; i++) {
@@ -40,7 +42,11 @@ function generateWordEmbedding(word: string, dim: number): number[] {
 }
 
 // Generate weight matrix (deterministic based on seed)
-function generateWeightMatrix(rows: number, cols: number, seed: number): number[][] {
+function generateWeightMatrix(
+  rows: number,
+  cols: number,
+  seed: number
+): number[][] {
   const rng = seededRandom(seed);
   const matrix: number[][] = [];
   const scale = Math.sqrt(2.0 / (rows + cols)); // Xavier initialization
@@ -56,7 +62,9 @@ function generateWeightMatrix(rows: number, cols: number, seed: number): number[
 
 // Matrix-vector multiplication
 function matVecMul(matrix: number[][], vec: number[]): number[] {
-  return matrix.map((row) => row.reduce((sum, val, i) => sum + val * vec[i], 0));
+  return matrix.map((row) =>
+    row.reduce((sum, val, i) => sum + val * vec[i], 0)
+  );
 }
 
 // Dot product of two vectors
@@ -71,8 +79,14 @@ export function AttentionDemo() {
   const [temperature, setTemperature] = useState(1.0);
 
   // Generate weight matrices for Q, K projections (fixed seeds for consistency)
-  const W_Q = useMemo(() => generateWeightMatrix(EMBEDDING_DIM, EMBEDDING_DIM, 42), []);
-  const W_K = useMemo(() => generateWeightMatrix(EMBEDDING_DIM, EMBEDDING_DIM, 123), []);
+  const W_Q = useMemo(
+    () => generateWeightMatrix(EMBEDDING_DIM, EMBEDDING_DIM, 42),
+    []
+  );
+  const W_K = useMemo(
+    () => generateWeightMatrix(EMBEDDING_DIM, EMBEDDING_DIM, 123),
+    []
+  );
 
   // Compute all embeddings
   const embeddings = useMemo(() => {
@@ -80,8 +94,14 @@ export function AttentionDemo() {
   }, [words]);
 
   // Compute Q and K vectors for all words
-  const queries = useMemo(() => embeddings.map((emb) => matVecMul(W_Q, emb)), [embeddings, W_Q]);
-  const keys = useMemo(() => embeddings.map((emb) => matVecMul(W_K, emb)), [embeddings, W_K]);
+  const queries = useMemo(
+    () => embeddings.map((emb) => matVecMul(W_Q, emb)),
+    [embeddings, W_Q]
+  );
+  const keys = useMemo(
+    () => embeddings.map((emb) => matVecMul(W_K, emb)),
+    [embeddings, W_K]
+  );
 
   // Compute attention scores using the real scaled dot-product formula: Q·K^T / √d_k
   const computeAttentionScores = useCallback(
@@ -136,16 +156,21 @@ export function AttentionDemo() {
       </h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <p className='text-muted-foreground mb-4 leading-relaxed'>
             {attentionDemoContent.description}
           </p>
 
           <div className='border-primary/50 bg-primary/5 mb-6 rounded-md border p-3'>
             <p className='text-sm'>
-              <span className='font-semibold'>Real Computation:</span> This demo uses actual scaled dot-product attention.
-              Each word has a {EMBEDDING_DIM}-dimensional embedding, projected through learned Q and K matrices.
-              Attention scores are computed as <code className='bg-muted rounded px-1'>Q·K<sup>T</sup>/√d<sub>k</sub></code> then passed through softmax.
+              <span className='font-semibold'>Real Computation:</span> This demo
+              uses actual scaled dot-product attention. Each word has a{' '}
+              {EMBEDDING_DIM}-dimensional embedding, projected through learned Q
+              and K matrices. Attention scores are computed as{' '}
+              <code className='bg-muted rounded px-1'>
+                Q·K<sup>T</sup>/√d<sub>k</sub>
+              </code>{' '}
+              then passed through softmax.
             </p>
           </div>
 
@@ -204,14 +229,15 @@ export function AttentionDemo() {
               className='w-full max-w-xs'
             />
             <p className='text-muted-foreground mt-2 text-xs'>
-              Lower temperature → sharper attention (focuses on highest scoring key).
-              Higher temperature → softer attention (more evenly distributed).
+              Lower temperature → sharper attention (focuses on highest scoring
+              key). Higher temperature → softer attention (more evenly
+              distributed).
             </p>
           </div>
 
           <div className='grid gap-8 lg:grid-cols-2'>
             {/* Left: Interactive Graph */}
-            <div className='border-border rounded-md border p-6'>
+            <div className='border-border overflow-x-auto rounded-md border p-6'>
               <Label className='mb-4 block text-center font-medium'>
                 Select &quot;Query&quot; Word
               </Label>
@@ -235,7 +261,9 @@ export function AttentionDemo() {
               <div className='space-y-4'>
                 <div className='text-muted-foreground flex items-center justify-between text-xs font-medium'>
                   <span className='w-20'>Target (Key)</span>
-                  <span className='w-32 text-center'>Score (Q·K/√d<sub>k</sub>)</span>
+                  <span className='w-32 text-center'>
+                    Score (Q·K/√d<sub>k</sub>)
+                  </span>
                   <span className='flex-1 text-right'>Attention %</span>
                 </div>
                 {words.map((word, i) => {
@@ -271,8 +299,15 @@ export function AttentionDemo() {
               </div>
 
               <div className='text-muted-foreground mt-4 border-t pt-4 text-xs'>
-                <p><strong>Formula:</strong> score<sub>ij</sub> = (Q<sub>i</sub> · K<sub>j</sub>) / √{EMBEDDING_DIM} = (Q<sub>i</sub> · K<sub>j</sub>) / {Math.sqrt(EMBEDDING_DIM).toFixed(2)}</p>
-                <p className='mt-1'><strong>Softmax:</strong> attention<sub>ij</sub> = exp(score<sub>ij</sub>) / Σ<sub>k</sub>exp(score<sub>ik</sub>)</p>
+                <p>
+                  <strong>Formula:</strong> score<sub>ij</sub> = (Q<sub>i</sub>{' '}
+                  · K<sub>j</sub>) / √{EMBEDDING_DIM} = (Q<sub>i</sub> · K
+                  <sub>j</sub>) / {Math.sqrt(EMBEDDING_DIM).toFixed(2)}
+                </p>
+                <p className='mt-1'>
+                  <strong>Softmax:</strong> attention<sub>ij</sub> = exp(score
+                  <sub>ij</sub>) / Σ<sub>k</sub>exp(score<sub>ik</sub>)
+                </p>
               </div>
             </div>
 

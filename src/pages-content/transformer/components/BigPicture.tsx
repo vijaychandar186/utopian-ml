@@ -29,7 +29,7 @@ export function BigPicture() {
       <h2 className='mb-6 text-xl font-semibold'>{bigPictureContent.title}</h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <p className='text-muted-foreground mb-6 leading-relaxed'>
             {bigPictureContent.description}
           </p>
@@ -96,7 +96,7 @@ export function BigPicture() {
                 {layers.map((layer, i) => (
                   <div
                     key={`encoder-${i}`}
-                    className={`text-primary-foreground w-24 rounded py-2 text-center text-xs ${layerColors[i % layerColors.length]}`}
+                    className={`text-primary-foreground w-20 rounded py-2 text-center text-xs sm:w-24 ${layerColors[i % layerColors.length]}`}
                   >
                     {layer}
                   </div>
@@ -109,7 +109,7 @@ export function BigPicture() {
                 {layers.map((layer, i) => (
                   <div
                     key={`decoder-${i}`}
-                    className={`text-primary-foreground w-24 rounded py-2 text-center text-xs ${layerColors[i % layerColors.length]}`}
+                    className={`text-primary-foreground w-20 rounded py-2 text-center text-xs sm:w-24 ${layerColors[i % layerColors.length]}`}
                   >
                     {layer}
                   </div>

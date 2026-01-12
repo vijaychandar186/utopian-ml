@@ -7,7 +7,7 @@ export function Summary() {
       <h2 className='mb-6 text-xl font-semibold'>{summaryContent.title}</h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <p className='text-muted-foreground mb-6 leading-relaxed'>
             {summaryContent.intro}
           </p>

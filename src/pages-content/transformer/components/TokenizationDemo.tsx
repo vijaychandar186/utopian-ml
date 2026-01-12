@@ -90,7 +90,7 @@ export function TokenizationDemo() {
       <h2 className='mb-6 text-xl font-semibold'>Tokenization</h2>
 
       <Card>
-        <CardContent className='p-8'>
+        <CardContent>
           <CardDescription className='mb-4'>
             See how the transformer breaks text into tokens — the fundamental
             units it processes. This uses the actual OPUS-MT tokenizer.
@@ -156,7 +156,7 @@ export function TokenizationDemo() {
                       >
                         {i}
                       </span>
-                      <span className='w-24 truncate'>
+                      <span className='w-20 truncate sm:w-24'>
                         &quot;{t.token.replace(/▁/g, '_')}&quot;
                       </span>
                       <span className='text-muted-foreground'>
