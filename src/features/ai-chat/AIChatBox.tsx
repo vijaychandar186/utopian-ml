@@ -6,7 +6,6 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { sendMessage } from '@/actions/ai-chat';
 import { cn } from '@/lib/utils';
 
 interface Message {
@@ -24,7 +23,6 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   const [mounted, setMounted] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -57,29 +55,68 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
       content: input
     };
 
+    const assistantMessageId = Date.now() + 1;
+
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
-    setIsLoading(true);
+    setError('');
 
-    const response = await sendMessage(
-      [...messages, userMessage].map(({ role, content }) => ({ role, content }))
-    );
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [...messages, userMessage].map(({ role, content }) => ({
+            role,
+            content
+          }))
+        })
+      });
 
-    setIsLoading(false);
-
-    if (response.error) {
-      setError(response.error);
-      return;
-    }
-
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        role: 'assistant',
-        content: response.content || ''
+      if (!response.ok) {
+        const errorData = await response.json();
+        setError(errorData.error || 'Failed to fetch AI response');
+        return;
       }
-    ]);
+
+      setMessages((prev) => [
+        ...prev,
+        { id: assistantMessageId, role: 'assistant', content: '' }
+      ]);
+
+      const reader = response.body?.getReader();
+      if (!reader) {
+        setError('Failed to read response stream');
+        return;
+      }
+
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const token = line.slice(6);
+            if (token === '[DONE]') break;
+
+            setMessages((prev) =>
+              prev.map((msg) =>
+                msg.id === assistantMessageId
+                  ? { ...msg, content: msg.content + token }
+                  : msg
+              )
+            );
+          }
+        }
+      }
+    } catch {
+      setError('Failed to fetch AI response');
+    }
   };
 
   const handleClear = () => {
@@ -199,14 +236,6 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             </div>
           </div>
         ))}
-
-        {isLoading && (
-          <div className='flex justify-start'>
-            <div className='bg-muted rounded-lg p-3 text-sm shadow'>
-              Thinking…
-            </div>
-          </div>
-        )}
 
         {error && (
           <div className='flex justify-start'>
