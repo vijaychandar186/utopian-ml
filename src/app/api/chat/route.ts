@@ -2,7 +2,7 @@ import Groq from 'groq-sdk';
 import { SYSTEM_CONTEXT, MODEL_NAME } from '@/constants/assistant-config';
 
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY
+  apiKey: process.env.GROQ_API_KEY || ''
 });
 
 interface ChatMessage {
