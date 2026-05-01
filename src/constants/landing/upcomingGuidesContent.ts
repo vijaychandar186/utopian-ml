@@ -5,27 +5,6 @@ export const upcomingGuidesContent = {
     // FOUNDATIONS - Statistical & Probabilistic Models (Pre-Deep Learning)
     // ═══════════════════════════════════════════════════════════════════════
     {
-      title: 'Perceptron',
-      description:
-        'The first neural model: linear classification inspired by biological neurons.',
-      category: 'Foundations',
-      icon: 'Brain'
-    },
-    {
-      title: 'Linear Regression',
-      description:
-        'Foundational supervised learning for continuous prediction tasks.',
-      category: 'Foundations',
-      icon: 'Sigma'
-    },
-    {
-      title: 'Logistic Regression',
-      description:
-        'Probabilistic classification model using the sigmoid function.',
-      category: 'Foundations',
-      icon: 'Sigma'
-    },
-    {
       title: 'Decision Trees',
       description:
         'Hierarchical models that learn decision rules from data features.',
@@ -150,6 +129,48 @@ export const upcomingGuidesContent = {
       category: 'Optimization',
       icon: 'Eraser'
     },
+    {
+      title: 'Transfer Learning',
+      description:
+        'Reusing pretrained representations to accelerate learning on new tasks.',
+      category: 'Optimization',
+      icon: 'Share2'
+    },
+    {
+      title: 'Data Augmentation',
+      description:
+        'Mixup, CutMix, AugMix, and augmentation strategies for better generalization.',
+      category: 'Optimization',
+      icon: 'Shuffle'
+    },
+    {
+      title: 'Gradient Flow',
+      description:
+        'Vanishing and exploding gradients, gradient clipping, and training stability.',
+      category: 'Optimization',
+      icon: 'Activity'
+    },
+    {
+      title: 'Least Squares',
+      description:
+        'Closed-form and iterative solutions to overdetermined systems. Normal equations, QR decomposition, and connections to linear regression and pseudoinverses.',
+      category: 'Optimization',
+      icon: 'Sigma'
+    },
+    {
+      title: 'Linear Programming',
+      description:
+        'Optimizing linear objectives over polytope feasible regions. Simplex method, duality, and LP relaxations in combinatorial problems.',
+      category: 'Optimization',
+      icon: 'TrendingUp'
+    },
+    {
+      title: 'Convex Optimization',
+      description:
+        'Convex sets, convex functions, and efficient algorithms. KKT conditions, duality theory, and gradient-based solvers for convex programs.',
+      category: 'Optimization',
+      icon: 'Maximize'
+    },
 
     // ═══════════════════════════════════════════════════════════════════════
     // SEQUENCE MODELS - Recurrent Architectures (Pre-Transformer)
@@ -226,6 +247,54 @@ export const upcomingGuidesContent = {
         'Pixel-level classification with FCN, U-Net, and Mask R-CNN.',
       category: 'Computer Vision',
       icon: 'Shapes'
+    },
+    {
+      title: 'DenseNet',
+      description:
+        'Dense skip connections from every layer to every subsequent layer.',
+      category: 'Computer Vision',
+      icon: 'LayoutGrid'
+    },
+    {
+      title: 'MobileNet',
+      description:
+        'Depthwise separable convolutions for efficient on-device inference.',
+      category: 'Computer Vision',
+      icon: 'Smartphone'
+    },
+    {
+      title: 'EfficientNet',
+      description:
+        'Compound scaling and neural architecture search for optimal CNNs.',
+      category: 'Computer Vision',
+      icon: 'TrendingUp'
+    },
+    {
+      title: 'FPN',
+      description: 'Feature Pyramid Networks for multi-scale object detection.',
+      category: 'Computer Vision',
+      icon: 'Triangle'
+    },
+    {
+      title: 'SENet',
+      description:
+        'Squeeze-and-Excitation Networks: channel-wise attention in CNNs.',
+      category: 'Computer Vision',
+      icon: 'Sliders'
+    },
+    {
+      title: 'DETR',
+      description:
+        'End-to-end object detection with Transformers, eliminating anchor boxes.',
+      category: 'Computer Vision',
+      icon: 'ScanSearch'
+    },
+    {
+      title: 'DINO & MAE',
+      description:
+        'Self-supervised vision pretraining via self-distillation and masked autoencoders.',
+      category: 'Computer Vision',
+      icon: 'Eye'
     },
 
     // ═══════════════════════════════════════════════════════════════════════
@@ -395,6 +464,45 @@ export const upcomingGuidesContent = {
       description: 'Generative models based on iterative denoising processes.',
       category: 'Generative',
       icon: 'Sparkles'
+    },
+    {
+      title: 'GAN Variants',
+      description:
+        'DCGAN, StyleGAN, BigGAN—architectural advances in adversarial generation.',
+      category: 'Generative',
+      icon: 'Layers'
+    },
+    {
+      title: 'Conditional Generation',
+      description:
+        'cGAN, Pix2Pix, and CycleGAN—controlled and unpaired image-to-image translation.',
+      category: 'Generative',
+      icon: 'Wand'
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // INTERPRETABILITY - Understanding Model Decisions
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      title: 'Grad-CAM',
+      description:
+        'Gradient-weighted class activation maps for visualizing CNN decisions.',
+      category: 'Interpretability',
+      icon: 'Map'
+    },
+    {
+      title: 'Saliency & Attribution',
+      description:
+        'Integrated Gradients, SHAP, and LIME for explaining model predictions.',
+      category: 'Interpretability',
+      icon: 'Highlighter'
+    },
+    {
+      title: 'Probing & Circuits',
+      description:
+        'Mechanistic interpretability: probing representations and tracing computation.',
+      category: 'Interpretability',
+      icon: 'Microscope'
     },
 
     // ═══════════════════════════════════════════════════════════════════════

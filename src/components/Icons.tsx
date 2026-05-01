@@ -71,7 +71,14 @@ import {
   BookMarked,
   Wrench,
   Bot,
-  RotateCcw
+  RotateCcw,
+  Smartphone,
+  TrendingUp,
+  Triangle,
+  Share2,
+  Map,
+  Highlighter,
+  Microscope
 } from 'lucide-react';
 
 export const GuideIcons = {
@@ -163,6 +170,19 @@ export const GuideIcons = {
   Wrench: Wrench,
   Bot: Bot,
 
+  // Computer Vision (new)
+  Smartphone: Smartphone,
+  TrendingUp: TrendingUp,
+  Triangle: Triangle,
+
+  // Optimization (new)
+  Share2: Share2,
+
+  // Interpretability
+  Map: Map,
+  Highlighter: Highlighter,
+  Microscope: Microscope,
+
   // Legacy mappings
   Languages: Terminal,
   MachineLearning: BrainCircuit,
@@ -189,7 +209,11 @@ export const NavIcons = {
 };
 
 export const ArchitectureIcons = {
-  Transformer: Layers
+  Transformer: Layers,
+  DiffusionLM: Sparkles,
+  Perceptron: Brain,
+  LinearRegression: TrendingUp,
+  LogisticRegression: Sigma
 };
 
 export const AllIcons = {

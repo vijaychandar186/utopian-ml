@@ -11,14 +11,51 @@ export const PROJECT_INFO = {
 
 export const navItems: NavItem[] = [
   {
-    title: 'Navigation',
+    title: 'Guides',
     items: [
       {
-        title: 'Transformer',
-        url: '/transformer',
+        // 1805–1980s: pre-deep-learning foundations (chronological)
+        title: 'Foundations',
+        icon: 'Perceptron',
+        items: [
+          {
+            title: 'Linear Regression',
+            url: '/linear-regression',
+            icon: 'LinearRegression',
+            shortcut: ['l']
+          },
+          {
+            title: 'Logistic Regression',
+            url: '/logistic-regression',
+            icon: 'LogisticRegression',
+            shortcut: ['g']
+          },
+          {
+            title: 'Perceptron',
+            url: '/perceptron',
+            icon: 'Perceptron',
+            shortcut: ['p']
+          }
+        ]
+      },
+      {
+        // 2017–present: modern architectures
+        title: 'Architecture',
         icon: 'Transformer',
-        isActive: false,
-        shortcut: ['t']
+        items: [
+          {
+            title: 'Transformer',
+            url: '/transformer',
+            icon: 'Transformer',
+            shortcut: ['t']
+          },
+          {
+            title: 'Diffusion LMs',
+            url: '/diffusion-lm',
+            icon: 'DiffusionLM',
+            shortcut: ['d']
+          }
+        ]
       }
     ]
   },
